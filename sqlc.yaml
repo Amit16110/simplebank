@@ -1,0 +1,26 @@
+version: "1"
+project:
+  id: ""
+packages:
+  - name: "db"
+    path: "./db/sqlc"
+    queries: "./db/query"
+    schema: "./db/migration"
+    engine: "postgresql"
+    emit_json_tags: true
+    emit_prepared_queries: false
+    emit_interface: false
+    emit_exact_table_names: false
+# inital package file
+# packages:
+#     - name: "db"
+#       path: "internal/db"
+#       queries: "./sql/query"
+#       schema: "./sql/schema"
+#       engine: "postgresql"
+#       emit_json_tags: true
+#       emit_prepared_queries: true
+#       emit_interface: false
+#       emit_exact_table_names: false
+
+#
