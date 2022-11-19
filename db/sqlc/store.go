@@ -8,7 +8,7 @@ import (
 
 // Store provides all functions to execute db queries and transactions
 type Store struct {
-	*Queries // Composition => it work like a inheritance in golang.
+	*Queries //Note:- Composition => it work like a inheritance in golang.
 	db       *sql.DB
 }
 
@@ -40,12 +40,14 @@ func (store *Store) execTx(ctx context.Context, fn func(*Queries) error) error {
 	return tx.Commit()
 }
 
+// TransferTxParams contains the input parameters of the transfer transaction.
 type TransferTxParams struct {
 	FromAccountID int64 `json:"from_account_id,omitempty"`
 	ToAccountID   int64 `json:"to_account_id,omitempty"`
 	Amount        int64 `json:"amount,omitempty"`
 }
 
+//TransferTxResult is the result of the transfer transaction
 type TransferTxResult struct {
 	Transfer    Transfer `json:"transfer,omitempty"`
 	FromAccount Account  `json:"from_account,omitempty"`

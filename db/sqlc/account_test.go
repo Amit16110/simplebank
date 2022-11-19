@@ -2,13 +2,15 @@ package db
 
 import (
 	"context"
+	"fmt"
 	"testing"
 
 	"github.com/amit16110/simplebank/util"
 	"github.com/stretchr/testify/require"
 )
 
-func TestCreateAccount(t *testing.T) {
+func createRandomAccount(t *testing.T) Account {
+	fmt.Println("account data")
 	arg := CreateAccountParams{
 		Owner:    util.RandomOwner(),
 		Balance:  util.RandomMoney(),
@@ -27,4 +29,10 @@ func TestCreateAccount(t *testing.T) {
 	requires.NotZero(account.ID)
 	requires.NotZero(account.CreatedAt)
 
+	return account
+}
+
+func TestCreateAccount(t *testing.T) {
+	t.Log("data")
+	createRandomAccount(t)
 }
