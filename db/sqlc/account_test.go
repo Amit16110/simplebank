@@ -2,7 +2,6 @@ package db
 
 import (
 	"context"
-	"fmt"
 	"testing"
 
 	"github.com/amit16110/simplebank/util"
@@ -10,7 +9,7 @@ import (
 )
 
 func createRandomAccount(t *testing.T) Account {
-	fmt.Println("account data")
+
 	arg := CreateAccountParams{
 		Owner:    util.RandomOwner(),
 		Balance:  util.RandomMoney(),
