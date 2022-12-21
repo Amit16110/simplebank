@@ -17,4 +17,7 @@ cmdHistory:
 sqlc:
 	sqlc generate
 
-.PHONY: createdb dropdb cmdHistory migrateUp migrateDown
+test:
+	go test -v -cover ./...
+
+.PHONY: createdb dropdb cmdHistory migrateUp migrateDown test
