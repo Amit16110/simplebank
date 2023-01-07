@@ -5,7 +5,9 @@ createdb:
 
 dropdb:
 	docker exec -it postgresdb dropdb simplebank
-
+# Not a root user
+dropdbNonRoot:
+	docker exec -it postgresdb psql -U postgres -d postgres -c "DROP DATABASE simplebank"
 migrateUp:
 	migrate -path db/migration -database "postgresql://postgres:secret@localhost:5432/simplebank?sslmode=disable" -verbose up
 migrateDown:
@@ -20,4 +22,6 @@ sqlc:
 test:
 	go test -v -cover ./...
 
-.PHONY: createdb dropdb cmdHistory migrateUp migrateDown test
+server:
+	go run main.go
+.PHONY: createdb dropdb cmdHistory migrateUp migrateDown test server dropdbNonRoot
